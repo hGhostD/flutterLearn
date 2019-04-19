@@ -11,9 +11,16 @@ class MyApp extends StatelessWidget {
         appBar: new AppBar(
           title: new Text('垂直方向布局'),
         ),
-        body: new Column(
-
-        )
+        body: Center(child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('这是第一列'),
+            Text('This is second.'),
+            Expanded(child: Text('第二列文字可以显示在这里'),),
+            Text('Flutter Leanr&Github'),
+          ],
+        ),)
       ),
     );
   }
