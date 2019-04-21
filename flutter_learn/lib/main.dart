@@ -1,65 +1,70 @@
 import 'package:flutter/material.dart';
 
-class Product {
-  final String title;
-  final String description;
-  Product(this.title, this.description);
-}
-
-void main() {
+void main(){
   runApp(MaterialApp(
-    title: '导航的传输数据与接收',
-    home: ProductList(
-      products: List.generate(
-        20,
-        (i)=>Product('序号$i', '编号$i'),
-    )
-    ),
+    title: "页面跳转返回数据",
+    home: FirstPage(),
   ));
 }
 
-class ProductList extends StatelessWidget {
-  final List<Product> products;
-  ProductList({Key key,@required this.products}):super(key:key);
-
+class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        appBar: AppBar(title: Text('商品列表'),),
-        body: ListView.builder(
-          itemCount: products.length,
-          itemBuilder: (context, index){
-            return ListTile(
-              title: Text(products[index].title),
-              subtitle: Text(products[index].description),
-              onTap: (){
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context)=>ProductDetail(products: products[index])
-                  )
-                );
-              },
-            );
-          },
-        ),
+    return Scaffold(
+      appBar: AppBar(title: Text("要电话"),),
+      body: Center(
+        child: RouteButton(),
       ),
     );
   }
 }
 
-class ProductDetail extends StatelessWidget {
-  final Product products;
-  ProductDetail({Key key,@required this.products}):super(key:key);
-
+class RouteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return RaisedButton(
+      onPressed: (){
+        _naviagateToXiaoJieJie(context);
+      },
+      child: Text('去找小姐姐'),
+    );
+  }
+
+  _naviagateToXiaoJieJie(BuildContext context) async{
+    final result = await Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context)=>XiaoJieJie())
+    );
+
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text('$result')));
+  }
+}
+
+class XiaoJieJie extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
-      appBar: AppBar(title: Text('${products.title}'),),
-      body: Center(
-        child: Text('${products.description}'),
+      appBar: AppBar(
+        title: Text('我是小姐姐'),
       ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            RaisedButton(
+              child: Text('大长腿小姐姐'),
+              onPressed: (){
+                Navigator.pop(context, '大长腿小姐姐：编号1');
+              },
+            ),
+            RaisedButton(
+              child: Text('小蛮腰小姐姐'),
+              onPressed: (){
+                Navigator.pop(context, '小蛮腰小姐姐：编号2');
+              },
+            ),
+          ],
+      ),)
     );
   }
 }
