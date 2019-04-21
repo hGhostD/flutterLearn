@@ -5,21 +5,30 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var stack = new Stack(
-      alignment: const FractionalOffset(0.5, 0.8),
-      children: <Widget>[
-        new CircleAvatar(
-          backgroundImage: new NetworkImage(
-              'https://avatars3.githubusercontent.com/u/13240543?s=460&v=4'),
-          radius: 100,
-        ),
-        new Positioned(
-          top: 10.0,
-          left: 10.0,
-          child: new Text('Text.com'),
-        ),
-        new Positioned(bottom: 10, right: 10, child: new Text('Bottom'))
-      ],
+    
+    var card = new Card(
+      child: Column(
+        children: <Widget>[
+          ListTile(
+            title: Text('辽宁省沈阳市沈河区', style: TextStyle(fontWeight: FontWeight.w900),),
+            subtitle: Text('subtitle'),
+            leading: new Icon(Icons.account_box, color: Colors.lightBlueAccent,),
+          ),
+          new Divider(), // 添加一行分割线
+          ListTile(
+            title: Text('北京市海淀区', style: TextStyle(fontWeight: FontWeight.w900),),
+            subtitle: Text('subtitle'),
+            leading: new Icon(Icons.account_box, color: Colors.lightBlueAccent,),
+          ),
+          new Divider(),
+          ListTile(
+            title: Text('上海市闵行区', style: TextStyle(fontWeight: FontWeight.w900),),
+            subtitle: Text('subtitle'),
+            leading: new Icon(Icons.account_box, color: Colors.lightBlueAccent,),
+          ),
+          new Divider(),
+        ],
+      ),
     );
     return MaterialApp(
       title: "Row Widget",
@@ -28,7 +37,7 @@ class MyApp extends StatelessWidget {
           title: new Text('垂直方向布局'),
         ),
         body: Center(
-          child: stack,
+          child: card,
         ),
       ),
     );
