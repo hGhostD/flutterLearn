@@ -1,43 +1,43 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  runApp(MaterialApp(
+    title: '导航演示01',
+    home: new FirstScreen(),
+  ));
+}
 
-class MyApp extends StatelessWidget {
+class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
-    var card = new Card(
-      child: Column(
-        children: <Widget>[
-          ListTile(
-            title: Text('辽宁省沈阳市沈河区', style: TextStyle(fontWeight: FontWeight.w900),),
-            subtitle: Text('subtitle'),
-            leading: new Icon(Icons.account_box, color: Colors.lightBlueAccent,),
-          ),
-          new Divider(), // 添加一行分割线
-          ListTile(
-            title: Text('北京市海淀区', style: TextStyle(fontWeight: FontWeight.w900),),
-            subtitle: Text('subtitle'),
-            leading: new Icon(Icons.account_box, color: Colors.lightBlueAccent,),
-          ),
-          new Divider(),
-          ListTile(
-            title: Text('上海市闵行区', style: TextStyle(fontWeight: FontWeight.w900),),
-            subtitle: Text('subtitle'),
-            leading: new Icon(Icons.account_box, color: Colors.lightBlueAccent,),
-          ),
-          new Divider(),
-        ],
-      ),
-    );
-    return MaterialApp(
-      title: "Row Widget",
-      home: Scaffold(
-        appBar: new AppBar(
-          title: new Text('垂直方向布局'),
+    return Scaffold(
+      appBar: AppBar(title: Text('导航页面'),),
+      body: Center(
+        child: RaisedButton(
+          child: Text('查看商品详情页'),
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => new SecondScreen()
+            ));
+          },
         ),
-        body: Center(
-          child: card,
+      ),
+
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('详情页面', style: TextStyle(fontSize: 22),),),
+      body: Center(
+        child: RaisedButton(
+          child: Text('返回'),
+          onPressed: (){
+            Navigator.pop(context);
+          },
         ),
       ),
     );
