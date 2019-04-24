@@ -7,7 +7,7 @@ class BottomNavigationWidget extends StatefulWidget {
 
 class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
 
-  final _BottomNavigationColor = Colors.blue;
+  final _color = Colors.blue;
 
   @override
   Widget build(BuildContext context) {
@@ -17,41 +17,41 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: _BottomNavigationColor,
+              color: _color,
             ),
             title: Text(
               'Home',
-              style: TextStyle(color: _BottomNavigationColor),
+              style: TextStyle(color: _color),
             )
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.email,
-              color: _BottomNavigationColor,
+              color: _color,
             ),
             title: Text(
               'Email',
-              style: TextStyle(color: _BottomNavigationColor),
+              style: TextStyle(color: _color),
             )
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.headset,
-              color: _BottomNavigationColor,
+              color: _color,
             ),
             title: Text(
               'Headset',
-              style: TextStyle(color: _BottomNavigationColor),
+              style: TextStyle(color: _color),
             )
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.airplay,
-              color: _BottomNavigationColor,
+              color: _color,
             ),
             title: Text(
               'Airplay',
-              style: TextStyle(color: _BottomNavigationColor),
+              style: TextStyle(color: _color),
             )
           ),
         ],
