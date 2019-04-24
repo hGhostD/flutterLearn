@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:demo01/home/headset_screen.dart';
+import 'package:demo01/home/airplay_screen.dart';
+import 'package:demo01/home/email_screen.dart';
+import 'package:demo01/home/home_screen.dart';
 
 class BottomNavigationWidget extends StatefulWidget {
   @override
@@ -8,10 +12,21 @@ class BottomNavigationWidget extends StatefulWidget {
 class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
 
   final _color = Colors.blue;
+  int _currenIndex = 0;
+  List<Widget> list = List();
 
   @override
+  void initState() { 
+    list
+      ..add(HomeScreen())
+      ..add(EmailScreen())
+      ..add(HeadSetScreen())
+      ..add(AirPlayScreen());
+    super.initState();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
+      body: list[_currenIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -55,6 +70,12 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             )
           ),
         ],
+        currentIndex: _currenIndex,
+        onTap: (int index){
+          setState(() { 
+            _currenIndex = index; 
+          });
+        },
       ),
     );
   }
